@@ -1,38 +1,405 @@
-.App {
-  text-align: center;
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-layout {
+  display: flex;
+  flex-direction: column; /* Stack sidebar above content on all screen sizes */
+  flex: 1;
+  padding: 3rem 4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 900px) {
+  .main-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 2px 16px rgba(160, 160, 255, 0.10);
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  .content {
+    padding: 2rem 1rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar {
+  background: rgba(255,255,255,0.85); /* Match About Me background */
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto 0 auto;
+  padding: 2rem 2rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(160, 160, 255, 0.08);
+}
+.sidebar-link {
+  color: #4b6cb7;
+  background: #e3f0ff;
+  padding: 0.2rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  display: inline-block;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-link:hover {
+  background: #ffffff;
+  color: #ffffff;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 12px rgba(160, 160, 255, 0.15);
+}
+
+.sidebar h1 {
+  margin: 0.5rem 0 0.2rem 0;
+  font-size: 2rem;
+  color: #4b6cb7;
+  font-weight: bold;
+}
+
+.sidebar h2 {
+  margin: 0 0 1.2rem 0;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.sidebar-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #4b6cb7;
+}
+
+.sidebar-contact a {
+  color: #7f7fd5;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+.content {
+  flex: 1;
+  padding: 3rem 4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+section {
+  background: rgba(255,255,255,0.85);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(160, 160, 255, 0.08);
+  padding: 2rem 2rem 1.5rem 2rem;
+}
+
+h3 {
+  color: #7f7fd5;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  background: #fff8f8;
+  font-size: 1rem;
+  box-shadow: 0 1px 4px rgba(160, 160, 255, 0.07);
+  resize: none;
+}
+
+.contact-form textarea {
+  min-height: 80px;
+}
+
+.contact-form button {
+  background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-form button:hover {
+  background: linear-gradient(90deg, #fbc2eb, #a6c1ee);
+}
+
+.thank-you {
+  color: #7f7fd5;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+.projects-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+  justify-content: flex-start;
+}
+
+.project-card {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(160, 160, 255, 0.10);
+  padding: 1.2rem 1.5rem;
+  min-width: 220px;
+  max-width: 260px;
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+  transition: transform 0.15s;
+}
+
+.project-card strong {
+  color: #7f7fd5;
+  font-size: 1.08rem;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(160, 160, 255, 0.18);
+}
+/* Contact Hero Section */
+.contact-hero {
+  display: flex;
+  gap: 2.5rem;
+  background: rgba(255,255,255,0.85);
+  border-radius: 24px;
+  box-shadow: 0 2px 12px rgba(160, 160, 255, 0.08);
+  padding: 2.5rem 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.contact-left {
+  flex: 1 1 260px;
+  min-width: 220px;
+  margin-bottom: 1.5rem;
+}
+
+.contact-left h2 {
+  font-size: 2rem;
+  color: #2d3142;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.contact-follow h4 {
+  margin-bottom: 0.7rem;
+  color: #7f7fd5;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.contact-follow ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-follow li {
+  margin-bottom: 0.7rem;
+}
+
+.contact-follow a {
+  color: #4b6cb7;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: color 0.2s;
+}
+
+.contact-follow a:hover {
+  color: #fbc2eb;
+}
+
+/* Modern Contact Form */
+.contact-right {
+  flex: 2 1 350px;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.contact-form-modern {
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  border-radius: 24px;
+  box-shadow: 0 2px 12px rgba(160, 160, 255, 0.10);
+  padding: 2rem 2rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-width: 260px;
+  width: 100%;
+  max-width: 400px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.contact-form-modern label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: #2d3142;
+  font-weight: 500;
+  gap: 0.4rem;
+}
+
+.contact-form-modern input,
+.contact-form-modern textarea {
+  padding: 0.7rem;
+  border: 1.5px solid #e0c3fc;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  transition: border 0.2s;
+}
+
+.contact-form-modern input:focus,
+.contact-form-modern textarea:focus {
+  border: 1.5px solid #7f7fd5;
+  outline: none;
+}
+
+.contact-form-modern textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.contact-form-modern button {
+  background: #2d3142;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.contact-form-modern button:hover {
+  background: #7f7fd5;
+  color: #2d3142;
+}
+
+.required {
+  color: #e57373;
+  margin-left: 2px;
+}
+
+/* Thank you message */
+.thank-you {
+  color: #7f7fd5;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .contact-hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.5rem 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .contact-left, .contact-right {
+    min-width: 0;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  .contact-form-modern {
+    max-width: 100%;
+    padding: 1.2rem 0.7rem;
+  }
+  .contact-left h2 {
+    font-size: 1.4rem;
   }
 }
+.skills-cards-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.skill-slide-card {
+  border-radius: 18px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(160, 160, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: flex-start;
+  background: #fff;
+  transition: transform 0.18s;
+}
+
+.skill-slide-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 6px 24px rgba(160, 160, 255, 0.13);
+}
+
+.skill-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pastel-blue    { background: #e3f0ff; }
+.pastel-purple  { background: #f3e9ff; }
+.pastel-orange  { background: #fff0e3; }
+.pastel-green   { background: #e3fff8; }
+.pastel-yellow  { background: #fffbe3; }
+.pastel-pink    { background: #ffe3f3; }
